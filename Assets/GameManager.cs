@@ -19,11 +19,11 @@ public class GameManager : NetworkBehaviour
         if(Input.GetKeyDown(KeyCode.K) && !hasSpawned)
         {
             hasSpawned = true;
-            SpawnPlayer();
+            SpawnPlayerServerRPC();
         }
     }
-
-    public void SpawnPlayer()
+    [ServerRpc]
+    public void SpawnPlayerServerRPC()
     {
         Instantiate(Player, new Vector3(0,0,0), Quaternion.identity);
         Player.GetComponent<NetworkObject>().SpawnWithOwnership(NetworkObjectId);
