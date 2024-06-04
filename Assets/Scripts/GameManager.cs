@@ -6,6 +6,7 @@ using Unity.Netcode;
 public class GameManager : NetworkBehaviour
 {
     [SerializeField] GameObject Player;
+    [SerializeField] Canvas StartCanvas;
     bool hasSpawned = false;
 
     // Start is called before the first frame update
@@ -24,10 +25,9 @@ public class GameManager : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K) && !hasSpawned)
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            hasSpawned = true;
-            SpawnPlayerServerRPC();
+            SpawnNewPlayer();
         }
     }
     [ServerRpc(RequireOwnership = false)]
@@ -37,5 +37,15 @@ public class GameManager : NetworkBehaviour
         GameObject newPlayer = Instantiate(Player, new Vector3(0,0,0), Quaternion.identity, GameObject.Find("Players").transform);
         newPlayer.GetComponent<NetworkObject>().SpawnWithOwnership(clientId, false);
         
+    }
+
+    public void SpawnNewPlayer()
+    {
+        if(!hasSpawned)
+        {
+            hasSpawned = true;
+            SpawnPlayerServerRPC();
+            StartCanvas.enabled = false;
+        }
     }
 }

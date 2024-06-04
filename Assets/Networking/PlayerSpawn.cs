@@ -29,11 +29,12 @@ public class PlayerSpawn : NetworkBehaviour
             GetComponent<SwitchActiveCamera>().enabled = false;
             Debug.Log("IsNotOwner");
             Destroy(myAudioListener.gameObject);
-            
+            this.gameObject.tag = "Player";
         }
         else
         {
             GetComponent<FirstPersonController>().ChangeActiveCamera(myCam.GetComponent<Camera>());
+            this.gameObject.tag = "MyPlayer";
             //GameObject.Find("Main Camera").SetActive(false);
             Debug.Log("IsOwner");
             Camera.main.gameObject.SetActive(false);
