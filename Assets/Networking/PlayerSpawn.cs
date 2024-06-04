@@ -32,6 +32,7 @@ public class PlayerSpawn : NetworkBehaviour
         }
         else
         {
+            GetComponent<FirstPersonController>().ChangeActiveCamera(myCam.GetComponent<Camera>());
             //GameObject.Find("Main Camera").SetActive(false);
             Debug.Log("IsOwner");
         }
