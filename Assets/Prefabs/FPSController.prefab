@@ -42,6 +42,7 @@ Transform:
   - {fileID: 400002}
   - {fileID: 5749592933956336516}
   - {fileID: 7265889130437820735}
+  - {fileID: 6771061801882454800}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &14300000
@@ -365,6 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCam: {fileID: 100002}
+  myAudioListener: {fileID: 3260077676373244357}
 --- !u!114 &439412254124371688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -439,7 +441,6 @@ GameObject:
   m_Component:
   - component: {fileID: 400002}
   - component: {fileID: 2000000}
-  - component: {fileID: 8100000}
   - component: {fileID: 12474086}
   m_Layer: 0
   m_Name: RedViewCamera
@@ -514,14 +515,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &8100000
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100002}
-  m_Enabled: 1
 --- !u!124 &12474086
 Behaviour:
   m_ObjectHideFlags: 0
@@ -613,6 +606,46 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3260077676373244357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6771061801882454800}
+  - component: {fileID: 1713092011453789753}
+  m_Layer: 0
+  m_Name: myAudioListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6771061801882454800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3260077676373244357}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 400000}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1713092011453789753
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3260077676373244357}
+  m_Enabled: 1
 --- !u!1 &7523707768506982830
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +656,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5749592933956336516}
   - component: {fileID: 3170434532705093736}
-  - component: {fileID: 8329000448817419306}
   - component: {fileID: 3158969600614248583}
   m_Layer: 0
   m_Name: BlueViewCamera
@@ -698,14 +730,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &8329000448817419306
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7523707768506982830}
-  m_Enabled: 1
 --- !u!124 &3158969600614248583
 Behaviour:
   m_ObjectHideFlags: 0

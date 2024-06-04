@@ -7,6 +7,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class PlayerSpawn : NetworkBehaviour
 {
     [SerializeField] GameObject myCam;
+    [SerializeField] GameObject myAudioListener;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class PlayerSpawn : NetworkBehaviour
             GetComponent<FirstPersonController>().enabled = false;
             GetComponent<SwitchActiveCamera>().enabled = false;
             Debug.Log("IsNotOwner");
+            Destroy(myAudioListener.gameObject);
         }
         else
         {
