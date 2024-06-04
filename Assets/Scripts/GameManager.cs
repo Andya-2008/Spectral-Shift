@@ -7,6 +7,7 @@ public class GameManager : NetworkBehaviour
 {
     [SerializeField] GameObject Player;
     bool hasSpawned = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,6 @@ public class GameManager : NetworkBehaviour
         var clientId = serverRpcParams.Receive.SenderClientId;
         GameObject newPlayer = Instantiate(Player, new Vector3(0,0,0), Quaternion.identity, GameObject.Find("Players").transform);
         newPlayer.GetComponent<NetworkObject>().SpawnWithOwnership(clientId, false);
-        Camera.main.gameObject.SetActive(false);
+        
     }
 }
