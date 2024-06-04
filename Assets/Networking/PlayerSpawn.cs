@@ -25,6 +25,7 @@ public class PlayerSpawn : NetworkBehaviour
         {
             myCam.SetActive(false);
             GetComponent<FirstPersonController>().enabled = false;
+            GetComponent<SwitchActiveCamera>().enabled = false;
             Debug.Log("IsNotOwner");
         }
         else

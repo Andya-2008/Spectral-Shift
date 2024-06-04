@@ -29,7 +29,7 @@ public class SwitchActiveCamera : MonoBehaviour
                 Debug.Log("Switched to blue camera");
             }
 
-            else if (blueViewCameraObject.activeSelf == true)
+            else
             {
                 blueViewCameraObject.SetActive(false);
                 redViewCameraObject.SetActive(true);
