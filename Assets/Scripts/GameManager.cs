@@ -22,11 +22,12 @@ public class GameManager : NetworkBehaviour
             SpawnPlayerServerRPC();
         }
     }
-    [ServerRpc]
-    public void SpawnPlayerServerRPC()
+    [ServerRpc(RequireOwnership = false)]
+    public void SpawnPlayerServerRPC(ServerRpcParams serverRpcParams = default)
     {
-        Instantiate(Player, new Vector3(0,0,0), Quaternion.identity);
-        Player.GetComponent<NetworkObject>().SpawnWithOwnership(NetworkObjectId);
+        var clientId = serverRpcParams.Receive.SenderClientId;
+        GameObject newPlayer = Instantiate(Player, new Vector3(0,0,0), Quaternion.identity, GameObject.Find("Players").transform);
+        newPlayer.GetComponent<NetworkObject>().SpawnWithOwnership(clientId, false);
         Camera.main.gameObject.SetActive(false);
     }
 }

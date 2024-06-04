@@ -176,7 +176,6 @@ GameObject:
   m_Component:
   - component: {fileID: 538542214}
   - component: {fileID: 538542213}
-  - component: {fileID: 538542215}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -214,18 +213,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &538542215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 538542211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1240451644
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +419,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1609681424}
   - component: {fileID: 1609681423}
-  - component: {fileID: 1609681425}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -517,18 +503,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &1609681425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609681422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1805246672
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +539,7 @@ MonoBehaviour:
     PlayerPrefab: {fileID: 0}
     Prefabs:
       NetworkPrefabsLists:
-      - {fileID: 11400000, guid: ddbeccc30a0ddbb4fa7f4932b156a985, type: 2}
+      - {fileID: 11400000, guid: 93091820d9fc8fb4ca51f6cb766de865, type: 2}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0
