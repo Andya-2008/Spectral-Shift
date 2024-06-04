@@ -11,7 +11,14 @@ public class GameManager : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(IsHost)
+        {
+            //Player 1 stuff
+        }
+        else if(IsClient)
+        {
+            //Player 2 stuf
+        }
     }
 
     // Update is called once per frame
