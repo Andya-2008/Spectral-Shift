@@ -18,7 +18,7 @@ public class GameManager : NetworkBehaviour
         }
         else if(IsClient)
         {
-            //Player 2 stuf
+            //Player 2 stuff
         }
     }
 
