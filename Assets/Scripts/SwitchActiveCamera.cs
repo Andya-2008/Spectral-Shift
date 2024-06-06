@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class SwitchActiveCamera : MonoBehaviour
 {
-    private Camera redViewCamera;
-    private Camera blueViewCamera;
+    private Camera color1Cam;
+    private Camera color2Cam;
+    private Camera color3Cam;
 
-    public GameObject redViewCameraObject;
-    public GameObject blueViewCameraObject;
+    public GameObject color1CamObject;
+    public GameObject color2CamObject;
+    public GameObject color3CamObject;
 
     void Start()
     {
-        redViewCamera = redViewCameraObject.GetComponent<Camera>();
-        blueViewCamera = blueViewCameraObject.GetComponent<Camera>();
+        color1Cam = color1CamObject.GetComponent<Camera>();
+        color2Cam = color2CamObject.GetComponent<Camera>();
+        color3Cam = color3CamObject.GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -21,20 +24,28 @@ public class SwitchActiveCamera : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (redViewCameraObject.activeSelf == true)
+            if (color1CamObject.activeSelf == true)
             {
-                redViewCameraObject.SetActive(false);
-                blueViewCameraObject.SetActive(true);
-                GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().ChangeActiveCamera(blueViewCamera);
-                Debug.Log("Switched to blue camera");
+                color1CamObject.SetActive(false);
+                color3CamObject.SetActive(false);
+                color2CamObject.SetActive(true);
+                GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().ChangeActiveCamera(color2Cam);
+            }
+
+            else if (color2CamObject.activeSelf == true)
+            {
+                color1CamObject.SetActive(false);
+                color2CamObject.SetActive(false);
+                color3CamObject.SetActive(true);
+                GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().ChangeActiveCamera(color3Cam);
             }
 
             else
             {
-                blueViewCameraObject.SetActive(false);
-                redViewCameraObject.SetActive(true);
-                GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().ChangeActiveCamera(redViewCamera);
-                Debug.Log("Switched to red camera");
+                color1CamObject.SetActive(true);
+                color3CamObject.SetActive(false);
+                color2CamObject.SetActive(false);
+                GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().ChangeActiveCamera(color1Cam);
             }
             
         }

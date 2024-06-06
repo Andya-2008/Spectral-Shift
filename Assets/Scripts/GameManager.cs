@@ -17,14 +17,7 @@ public class GameManager : NetworkBehaviour
     void Start()
     {
         UpdateCountServerRPC();
-        if(IsHost)
-        {
-            //Player 1 stuff
-        }
-        else if(IsClient)
-        {
-            //Player 2 stuff
-        }
+        
     }
 
     // Update is called once per frame
