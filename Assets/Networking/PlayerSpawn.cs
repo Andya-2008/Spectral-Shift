@@ -50,16 +50,33 @@ public class PlayerSpawn : NetworkBehaviour
         if (IsHost)
         {
             //Player 1 stuff
+
             color1Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Red Objects");
-            color2Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Green Objects");
-            color3Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Blue Objects");
+
+            if (GameManager.isLevel3Completed == true)
+            {
+                color2Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Green Objects");
+
+                if (GameManager.isLevel5Completed == true)
+                {
+                    color3Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Blue Objects");
+                }
+            }
         }
         else if (IsClient)
         {
             //Player 2 stuff
             color1Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Cyan Objects");
-            color2Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Magenta Objects");
-            color3Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Yellow Objects");
+
+            if (GameManager.isLevel3Completed == true)
+            {
+                color2Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Magenta Objects");
+
+                if (GameManager.isLevel5Completed == true)
+                {
+                    color3Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Yellow Objects");
+                }
+            }
         }
     }
 }
