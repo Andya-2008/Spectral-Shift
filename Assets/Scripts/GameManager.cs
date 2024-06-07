@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.Netcode;
 using TMPro;
 using Unity.Services.Lobbies.Models;
+using UnityEngine.SceneManagement;
 
 public class GameManager : NetworkBehaviour
 {
@@ -27,6 +28,10 @@ public class GameManager : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            StartEndGameRPC();
+        }
         if(Input.GetKeyDown(KeyCode.Space))
         {
             SpawnNewPlayer();
@@ -63,8 +68,18 @@ public class GameManager : NetworkBehaviour
         playerCountText.text = "Players: " + roomCount.ToString();
     }
 
-    public void StartEndGame()
+    //Call here when the game is done
+    [Rpc(SendTo.Everyone)]
+    public void StartEndGameRPC()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         EndCanvas.GetComponent<Canvas>().enabled = true;
+    }
+    [Rpc(SendTo.Everyone)]
+    public void LevelOverRPC()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        EndCanvas.GetComponent<Canvas>().enabled = false;
     }
 }
