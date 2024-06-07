@@ -28,6 +28,7 @@ public class PlayerSpawn : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+        DontDestroyOnLoad(this.gameObject);
         if(!this.GetComponent<NetworkObject>().IsOwner)
         {
             myCam.SetActive(false);

@@ -9,15 +9,19 @@ public class GameManager : NetworkBehaviour
 {
     [SerializeField] GameObject Player;
     [SerializeField] Canvas StartCanvas;
+    [SerializeField] Canvas EndCanvas;
     [SerializeField] TextMeshProUGUI playerCountText;
     bool hasSpawned = false;
     int roomCount = 0;
+    [SerializeField] GameObject mainObjectsParent;
+    [SerializeField] public GameObject playersParent;
 
     // Start is called before the first frame update
     void Start()
     {
         UpdateCountServerRPC();
-        
+        StartCanvas.GetComponent<Canvas>().enabled = true;
+        DontDestroyOnLoad(mainObjectsParent.gameObject);
     }
 
     // Update is called once per frame
@@ -32,8 +36,8 @@ public class GameManager : NetworkBehaviour
     public void SpawnPlayerServerRPC(ServerRpcParams serverRpcParams = default)
     {
         var clientId = serverRpcParams.Receive.SenderClientId;
-        GameObject newPlayer = Instantiate(Player, new Vector3(0,0,0), Quaternion.identity, GameObject.Find("Players").transform);
-        newPlayer.GetComponent<NetworkObject>().SpawnWithOwnership(clientId, false);    
+        GameObject newPlayer = Instantiate(Player, new Vector3(0,0,0), Quaternion.identity);
+        newPlayer.GetComponent<NetworkObject>().SpawnWithOwnership(clientId, false);
     }
 
     public void SpawnNewPlayer()
@@ -55,6 +59,12 @@ public class GameManager : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     public void UpdateCountRPC(int roomCount)
     {
+        playerCountText.gameObject.SetActive(true);
         playerCountText.text = "Players: " + roomCount.ToString();
+    }
+
+    public void StartEndGame()
+    {
+        EndCanvas.GetComponent<Canvas>().enabled = true;
     }
 }
