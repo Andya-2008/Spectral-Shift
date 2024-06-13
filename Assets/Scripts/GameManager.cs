@@ -6,6 +6,7 @@ using TMPro;
 using Unity.Services.Lobbies.Models;
 using UnityEngine.SceneManagement;
 using JetBrains.Annotations;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameManager : NetworkBehaviour
 {
@@ -20,6 +21,10 @@ public class GameManager : NetworkBehaviour
     [SerializeField] GameObject mainObjectsParent;
     [SerializeField] public GameObject playersParent;
 
+    //Make spawn point in each scene
+    public Transform StartingPos1;
+    public Transform StartingPos2;
+
     public static bool isLevel1Completed = true;
     public static bool isLevel2Completed = false;
     public static bool isLevel3Completed = false;
@@ -33,6 +38,11 @@ public class GameManager : NetworkBehaviour
         UpdateCountServerRPC();
         StartCanvas.GetComponent<Canvas>().enabled = true;
         DontDestroyOnLoad(mainObjectsParent.gameObject);
+        SetNewSpawn();
+        if (NetworkManager.Singleton.IsHost)
+        {
+            SpawnEveryoneRPC();
+        }
     }
 
     // Update is called once per frame
@@ -83,6 +93,7 @@ public class GameManager : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     public void StartEndGameRPC()
     {
+        
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         EndCanvas.GetComponent<Canvas>().enabled = true;
@@ -126,5 +137,35 @@ public class GameManager : NetworkBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         EndCanvas.GetComponent<Canvas>().enabled = false;
         Debug.Log("the function has indeed reached the end of its lifetime");
+        SetNewSpawn();
+        SpawnEveryoneRPC();
+    }
+    public void SetNewSpawn()
+    {
+        StartingPos1 = GameObject.Find("StartingPos1").transform;
+        StartingPos2 = GameObject.Find("StartingPos2").transform;
+    }
+
+    [Rpc(SendTo.Everyone)]
+    public void SpawnEveryoneRPC()
+    {
+        Debug.Log("1");
+        foreach(GameObject player in PlayerList)
+        {
+            player.GetComponent<FirstPersonController>().isMoving = false;
+            player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            if(player.GetComponent<PlayerSpawn>().player1)
+            {
+                player.transform.position = StartingPos1.position;
+                Debug.Log(player.transform.position + " : " + StartingPos1.position);
+            }
+            else if(player.GetComponent<PlayerSpawn>().player2)
+            {
+                player.transform.position = StartingPos2.position;
+            }
+            player.transform.rotation = Quaternion.identity;
+            player.GetComponent<PlayerSpawn>().startTime = Time.time;
+            player.GetComponent<PlayerSpawn>().cantMove = true;
+        }
     }
 }
