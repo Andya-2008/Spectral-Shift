@@ -21,8 +21,8 @@ public class GameManager : NetworkBehaviour
     [SerializeField] public GameObject playersParent;
 
     public static bool isLevel1Completed = true;
-    public static bool isLevel2Completed = true;
-    public static bool isLevel3Completed = true;
+    public static bool isLevel2Completed = false;
+    public static bool isLevel3Completed = false;
     public static bool isLevel4Completed = false;
     public static bool isLevel5Completed = false;
     public static bool isLevel6Completed = false;
@@ -88,32 +88,32 @@ public class GameManager : NetworkBehaviour
         EndCanvas.GetComponent<Canvas>().enabled = true;
 
         // Checks if the level just completed is level 1
-        if (SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex+1).name.Equals("Level1"))
+        if (SceneManager.GetActiveScene().name.Equals("Level1"))
         {
             isLevel1Completed = true;
         }
 
-        else if (SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).name.Equals("Level2"))
+        else if (SceneManager.GetActiveScene().name.Equals("Level2"))
         {
             isLevel2Completed = true;
         }
 
-        else if (SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).name.Equals("Level3"))
+        else if (SceneManager.GetActiveScene().name.Equals("Level3"))
         {
             isLevel3Completed = true;
         }
 
-        else if (SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).name.Equals("Level4"))
+        else if (SceneManager.GetActiveScene().name.Equals("Level4"))
         {
             isLevel4Completed = true;
         }
 
-        else if (SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).name.Equals("Level5"))
+        else if (SceneManager.GetActiveScene().name.Equals("Level5"))
         {
             isLevel5Completed = true;
         }
 
-        else if (SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).name.Equals("Level6"))
+        else if (SceneManager.GetActiveScene().name.Equals("Level6"))
         {
             isLevel6Completed = true;
         }
@@ -122,7 +122,9 @@ public class GameManager : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     public void LevelOverRPC()
     {
+        Debug.Log("the function has indeed ran");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         EndCanvas.GetComponent<Canvas>().enabled = false;
+        Debug.Log("the function has indeed reached the end of its lifetime");
     }
 }
