@@ -56,7 +56,30 @@ public class GameManager : NetworkBehaviour
         {
             SpawnNewPlayer();
         }
+
+        
     }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // called second
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SetNewSpawn();
+        if (NetworkManager.Singleton.IsHost)
+        {
+            SpawnEveryoneRPC();
+        }
+    }
+
     [ServerRpc(RequireOwnership = false)]
     public void SpawnPlayerServerRPC(ServerRpcParams serverRpcParams = default)
     {
@@ -137,8 +160,7 @@ public class GameManager : NetworkBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         EndCanvas.GetComponent<Canvas>().enabled = false;
         Debug.Log("the function has indeed reached the end of its lifetime");
-        SetNewSpawn();
-        SpawnEveryoneRPC();
+        
     }
     public void SetNewSpawn()
     {

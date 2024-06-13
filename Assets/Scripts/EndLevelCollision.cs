@@ -35,7 +35,6 @@ public class EndLevelCollision : MonoBehaviour
         if (numOfPlayersCompleted >= 2)
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().StartEndGameRPC();
-            GameObject.Find("GameManager").GetComponent<GameManager>().LevelOverRPC();
             Debug.Log("Both players reached the end!");
         }
 
