@@ -18,7 +18,8 @@ GameObject:
   - component: {fileID: 1122077642029041986}
   - component: {fileID: 439412254124371688}
   - component: {fileID: 6479903692742960725}
-  - component: {fileID: 1379793891288998927}
+  - component: {fileID: 5909849072575757234}
+  - component: {fileID: 336673447044105109}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Player
@@ -196,6 +197,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  isMoving: 1
+  myCapsule: {fileID: 2585613117854520508}
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -415,14 +418,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &1379793891288998927
+--- !u!65 &5909849072575757234
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100000}
-  m_Material: {fileID: 13400000, guid: bf1742924c56c8b4faf1ba4e298689f9, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -436,6 +439,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &336673447044105109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378f70752ce994b2999f66cbdb33453d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
