@@ -5,10 +5,13 @@ using Unity.Netcode;
 using TMPro;
 using Unity.Services.Lobbies.Models;
 using UnityEngine.SceneManagement;
+using JetBrains.Annotations;
 
 public class GameManager : NetworkBehaviour
 {
     [SerializeField] GameObject Player;
+    public List<GameObject> PlayerList = new List<GameObject>();
+
     [SerializeField] Canvas StartCanvas;
     [SerializeField] Canvas EndCanvas;
     [SerializeField] TextMeshProUGUI playerCountText;
