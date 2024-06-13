@@ -73,6 +73,10 @@ public class GameManager : NetworkBehaviour
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        foreach(GameObject player in PlayerList)
+        {
+            player.GetComponent<FirstPersonController>().enabled = true;
+        }
         SetNewSpawn();
         if (NetworkManager.Singleton.IsHost)
         {
@@ -116,7 +120,10 @@ public class GameManager : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     public void StartEndGameRPC()
     {
-        
+        foreach(GameObject player in PlayerList)
+        {
+            player.GetComponent<FirstPersonController>().enabled = false;
+        }
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         EndCanvas.GetComponent<Canvas>().enabled = true;
