@@ -41,6 +41,6 @@ public class Maze_ShardManager : MonoBehaviour
         GameObject newShard = Instantiate(Shard, ShardPosList[spawnNum].position, Quaternion.identity);
         Color ShardColor = Color.clear;
         ColorUtility.TryParseHtmlString(colors[colorNum], out ShardColor);
-        newShard.GetComponent<MeshRenderer>().material.color = ShardColor;
+        newShard.GetComponent<Shard>().myCube.GetComponent<MeshRenderer>().material.color = ShardColor;
     }
 }
