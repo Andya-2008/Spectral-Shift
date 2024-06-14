@@ -28,6 +28,7 @@ public class Maze_ShardManager : MonoBehaviour
         {
             if (Time.time - startTime >= timeBetweenEachShard)
             {
+                startTime = Time.time;
                 int randomColorInt = Random.Range(0, 4);
                 int randomSpawnInt = Random.Range(0, ShardPosList.Count);
                 SpawnShardRPC(randomColorInt, randomSpawnInt);
