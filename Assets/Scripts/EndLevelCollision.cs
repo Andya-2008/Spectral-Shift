@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class EndLevelCollision : MonoBehaviour
 {
-    [SerializeField]
-    public int numOfPlayersCompleted = 0;
+
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -26,13 +28,22 @@ public class EndLevelCollision : MonoBehaviour
         {
             collision.collider.gameObject.GetComponent<OnReachEnd>().ReachedEndRpc();
 
-            if (numOfPlayersCompleted == 1)
+            if (SceneManager.GetActiveScene().name == "Level1")
+            {
+                if (collision.collider.gameObject.GetComponent<PlayerSpawn>().player1)
+                {
+                    collision.collider.gameObject.GetComponent<OnPlayer1ReachEnd>().Player1ReachedEndRpc();
+                }
+            }
+
+
+            if (gameManager.numOfPlayersCompleted == 1)
             {
                 return;
             }
         }
 
-        if (numOfPlayersCompleted >= 2)
+        if (gameManager.numOfPlayersCompleted >= 2)
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().StartEndGameRPC();
             Debug.Log("Both players reached the end!");

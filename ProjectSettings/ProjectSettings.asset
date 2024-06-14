@@ -944,11 +944,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: df0c8629-612c-4ebc-9fc0-4d7c388d9c20
+  cloudProjectId: a9f2105c-6eb2-45a8-9488-17b910b3bdee
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: Co-op Spectral Shift (1)
-  organizationId: andrewhyun
+  organizationId: dynamic-duo-developers
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

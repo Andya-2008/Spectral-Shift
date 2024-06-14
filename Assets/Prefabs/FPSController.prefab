@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 6479903692742960725}
   - component: {fileID: 5909849072575757234}
   - component: {fileID: 336673447044105109}
+  - component: {fileID: 776434525052255917}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Player
@@ -375,6 +376,11 @@ MonoBehaviour:
   color1Cam: {fileID: 2000000}
   color2Cam: {fileID: 3170434532705093736}
   color3Cam: {fileID: 451103818865636206}
+  player1: 0
+  player2: 0
+  startTime: 0
+  timeSinceDeath: 2
+  cantMove: 0
 --- !u!114 &439412254124371688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +455,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 378f70752ce994b2999f66cbdb33453d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &776434525052255917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4afd3c26b8749038a59b4888333fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &100002
