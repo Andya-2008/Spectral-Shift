@@ -945,8 +945,11 @@ PlayerSettings:
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
   cloudProjectId: 27823040-6cc0-46cc-8a70-04053dae905d
+  cloudProjectId: a9f2105c-6eb2-45a8-9488-17b910b3bdee
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
+  projectName: Co-op Spectral Shift (1)
+  organizationId: dynamic-duo-developers
   projectName: Co-op Spectral Shift
   organizationId: dynamic-duo-developers
   cloudEnabled: 0

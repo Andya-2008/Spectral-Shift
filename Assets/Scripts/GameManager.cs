@@ -25,12 +25,15 @@ public class GameManager : NetworkBehaviour
     public Transform StartingPos1;
     public Transform StartingPos2;
 
-    public static bool isLevel1Completed = true;
+    public static bool isLevel1Completed = false;
     public static bool isLevel2Completed = false;
     public static bool isLevel3Completed = false;
     public static bool isLevel4Completed = false;
     public static bool isLevel5Completed = false;
     public static bool isLevel6Completed = false;
+
+    [SerializeField]
+    public int numOfPlayersCompleted = 0;
 
     // Start is called before the first frame update
     void Start()

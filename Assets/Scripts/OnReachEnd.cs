@@ -25,6 +25,6 @@ public class OnReachEnd : NetworkBehaviour
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         GetComponent<FirstPersonController>().isMoving = false;
         GetComponent<FirstPersonController>().myCapsule.SetActive(false);
-        GameObject.Find("EndingDoor").GetComponent<EndLevelCollision>().numOfPlayersCompleted++;
+        GameObject.Find("GameManager").GetComponent<GameManager>().numOfPlayersCompleted++;
     }
 }
