@@ -15,9 +15,9 @@ public class Maze_ShardManager : MonoBehaviour
     void Start()
     {
         colors.Add("Red");
-        colors.Add("Blue");
+        //colors.Add("Blue");
         colors.Add("Yellow");
-        colors.Add("Cyan");
+        //colors.Add("Cyan");
         startTime = Time.time;
     }
 
@@ -29,7 +29,7 @@ public class Maze_ShardManager : MonoBehaviour
             if (Time.time - startTime >= timeBetweenEachShard)
             {
                 startTime = Time.time;
-                int randomColorInt = Random.Range(0, 4);
+                int randomColorInt = Random.Range(0, colors.Count);
                 int randomSpawnInt = Random.Range(0, ShardPosList.Count);
                 SpawnShardRPC(randomColorInt, randomSpawnInt);
             }
@@ -42,5 +42,6 @@ public class Maze_ShardManager : MonoBehaviour
         Color ShardColor = Color.clear;
         ColorUtility.TryParseHtmlString(colors[colorNum], out ShardColor);
         newShard.GetComponent<Shard>().myCube.GetComponent<MeshRenderer>().material.color = ShardColor;
+        newShard.layer = LayerMask.NameToLayer(colors[colorNum]);
     }
 }
