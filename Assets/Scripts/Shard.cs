@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Shard : MonoBehaviour
 {
-    [SerializeField] public GameObject myCube;
     [SerializeField] float moveSpeed;
     // Start is called before the first frame update
     void Start()
@@ -22,10 +21,10 @@ public class Shard : MonoBehaviour
     {
         if (collision != null)
         {
-            Debug.Log("Shard collided with " + collision.gameObject.name + " : " + collision.gameObject.tag);
             if(collision.gameObject.tag == "MyPlayer" || collision.gameObject.tag == "Player")
             {
                 GameObject.Find("GameManager").GetComponent<DeathManager>().OnDeath();
+                GameObject.Find("ShardManager").GetComponent<Maze_ShardManager>().DestroyAllShardsRPC();
             }
         }
     }

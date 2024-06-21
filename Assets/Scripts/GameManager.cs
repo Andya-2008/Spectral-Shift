@@ -25,6 +25,8 @@ public class GameManager : NetworkBehaviour
     public Transform StartingPos1;
     public Transform StartingPos2;
 
+    [SerializeField] GameObject shardManager; 
+
     public static bool isLevel1Completed = false;
     public static bool isLevel2Completed = false;
     public static bool isLevel3Completed = false;
@@ -85,6 +87,12 @@ public class GameManager : NetworkBehaviour
         {
             SpawnEveryoneRPC();
         }
+
+        if (IsHost && isLevel1Completed && !isLevel2Completed)
+        {
+            GameObject newShardManager = Instantiate(shardManager, new Vector3(0, 0, 0), Quaternion.identity);
+            newShardManager.GetComponent<NetworkObject>().Spawn();
+        }
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -108,6 +116,7 @@ public class GameManager : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void UpdateCountServerRPC()
     {
+        Debug.Log("I am the server: UpdateCountServerRPC");
         roomCount++;
         UpdateCountRPC(roomCount);
     }
@@ -115,6 +124,7 @@ public class GameManager : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     public void UpdateCountRPC(int roomCount)
     {
+        Debug.Log("UpdatingCount"); 
         playerCountText.gameObject.SetActive(true);
         playerCountText.text = "Players: " + roomCount.ToString();
     }
@@ -166,10 +176,8 @@ public class GameManager : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     public void LevelOverRPC()
     {
-        Debug.Log("the function has indeed ran");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         EndCanvas.GetComponent<Canvas>().enabled = false;
-        Debug.Log("the function has indeed reached the end of its lifetime");
         
     }
     public void SetNewSpawn()
@@ -181,7 +189,6 @@ public class GameManager : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     public void SpawnEveryoneRPC()
     {
-        Debug.Log("1");
         foreach(GameObject player in PlayerList)
         {
             player.GetComponent<FirstPersonController>().isMoving = false;
@@ -189,7 +196,6 @@ public class GameManager : NetworkBehaviour
             if(player.GetComponent<PlayerSpawn>().player1)
             {
                 player.transform.position = StartingPos1.position;
-                Debug.Log(player.transform.position + " : " + StartingPos1.position);
             }
             else if(player.GetComponent<PlayerSpawn>().player2)
             {
