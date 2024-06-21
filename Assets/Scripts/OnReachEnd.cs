@@ -25,6 +25,14 @@ public class OnReachEnd : NetworkBehaviour
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         GetComponent<FirstPersonController>().isMoving = false;
         GetComponent<FirstPersonController>().myCapsule.SetActive(false);
+        
+        Debug.Log("The number of players completed increased by 1");
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void IncreasePlayersCompletedServerRpc()
+    {
         GameObject.Find("GameManager").GetComponent<GameManager>().numOfPlayersCompleted++;
     }
+
 }

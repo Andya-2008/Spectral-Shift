@@ -24,27 +24,24 @@ public class EndLevelCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.collider.name + " collided with the end");
+
         if (collision.collider.tag == "Player" || collision.collider.tag == "MyPlayer")
         {
+            Debug.Log("A player reached the end");
             collision.collider.gameObject.GetComponent<OnReachEnd>().ReachedEndRpc();
-
-            if (SceneManager.GetActiveScene().name == "Level1")
-            {
-                if (collision.collider.gameObject.GetComponent<PlayerSpawn>().player1)
-                {
-                    collision.collider.gameObject.GetComponent<OnPlayer1ReachEnd>().Player1ReachedEndRpc();
-                }
-            }
-
+            collision.collider.gameObject.GetComponent<OnReachEnd>().IncreasePlayersCompletedServerRpc();
 
             if (gameManager.numOfPlayersCompleted == 1)
             {
+                Debug.Log("The first player reached the end!");
                 return;
             }
         }
 
-        if (gameManager.numOfPlayersCompleted >= 2)
+        if (gameManager.numOfPlayersCompleted >= 2 && NetworkManager.Singleton.IsHost)
         {
+            Debug.Log("Both players reached the end!");
             GameObject.Find("GameManager").GetComponent<GameManager>().StartEndGameRPC();
             Debug.Log("Both players reached the end!");
         }
