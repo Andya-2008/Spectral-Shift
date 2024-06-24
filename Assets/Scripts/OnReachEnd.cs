@@ -32,7 +32,7 @@ public class OnReachEnd : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void IncreasePlayersCompletedServerRpc()
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>().numOfPlayersCompleted++;
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().numOfPlayersCompleted++;
     }
 
 }

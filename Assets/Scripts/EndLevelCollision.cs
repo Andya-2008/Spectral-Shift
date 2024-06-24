@@ -13,8 +13,8 @@ public class EndLevelCollision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(GameObject.Find("GameManager") != null)
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if(GameObject.FindGameObjectWithTag("GameManager") != null)
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -42,9 +42,7 @@ public class EndLevelCollision : MonoBehaviour
 
         if (gameManager.numOfPlayersCompleted >= 2 && NetworkManager.Singleton.IsHost)
         {
-            Debug.Log("Both players reached the end!");
-            GameObject.Find("GameManager").GetComponent<GameManager>().StartEndGameRPC();
-            Debug.Log("Both players reached the end!");
+            gameManager.GetComponent<GameManager>().StartEndGameRPC();
         }
 
     }

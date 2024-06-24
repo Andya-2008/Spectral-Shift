@@ -14,6 +14,7 @@ public class GameManagerSpawn : NetworkBehaviour
     [SerializeField] Canvas StartCanvas;
     [SerializeField] TextMeshProUGUI playerCountText;
     int roomCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +53,11 @@ public class GameManagerSpawn : NetworkBehaviour
         {
             Debug.Log("Has run SpawnPlayerServerRPC on client");
         }
+    }
+
+    public void LevelOverRPC()
+    {
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().LevelOverRPC();
     }
 
     public void SpawnNewPlayer()
