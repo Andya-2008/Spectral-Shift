@@ -10,16 +10,11 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameManager : NetworkBehaviour
 {
-    [SerializeField] GameObject Player;
     public List<GameObject> PlayerList = new List<GameObject>();
 
-    [SerializeField] Canvas StartCanvas;
-    [SerializeField] Canvas EndCanvas;
-    [SerializeField] TextMeshProUGUI playerCountText;
-    bool hasSpawned = false;
-    int roomCount = 0;
     [SerializeField] GameObject mainObjectsParent;
     [SerializeField] public GameObject playersParent;
+    [SerializeField] Canvas EndCanvas;
 
     //Make spawn point in each scene
     public Transform StartingPos1;
@@ -40,8 +35,15 @@ public class GameManager : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpdateCountServerRPC();
-        StartCanvas.GetComponent<Canvas>().enabled = true;
+        //Setting all of the serializables
+        mainObjectsParent = GameObject.Find("MainObjects");
+        playersParent = GameObject.Find("Players");
+        GameObject.Find("EndingDoor").GetComponent<EndLevelCollision>().gameManager = GetComponent<GameManager>();
+        EndCanvas = GameObject.Find("LevelOverCanvas").GetComponent<Canvas>();
+        //
+        DontDestroyOnLoad(this);
+
+        
         DontDestroyOnLoad(mainObjectsParent.gameObject);
         SetNewSpawn();
         if (NetworkManager.Singleton.IsHost)
@@ -56,10 +58,6 @@ public class GameManager : NetworkBehaviour
         if(Input.GetKeyDown(KeyCode.E))
         {
             StartEndGameRPC();
-        }
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnNewPlayer();
         }
 
         
@@ -93,40 +91,6 @@ public class GameManager : NetworkBehaviour
             GameObject newShardManager = Instantiate(shardManager, new Vector3(0, 0, 0), Quaternion.identity);
             newShardManager.GetComponent<NetworkObject>().Spawn();
         }
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    public void SpawnPlayerServerRPC(ServerRpcParams serverRpcParams = default)
-    {
-        var clientId = serverRpcParams.Receive.SenderClientId;
-        GameObject newPlayer = Instantiate(Player, new Vector3(0,0,0), Quaternion.identity);
-        newPlayer.GetComponent<NetworkObject>().SpawnWithOwnership(clientId, false);
-    }
-
-    public void SpawnNewPlayer()
-    {
-        if(!hasSpawned)
-        {
-            hasSpawned = true;
-            SpawnPlayerServerRPC();
-            StartCanvas.enabled = false;
-        }
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    public void UpdateCountServerRPC()
-    {
-        Debug.Log("I am the server: UpdateCountServerRPC");
-        roomCount++;
-        UpdateCountRPC(roomCount);
-    }
-
-    [Rpc(SendTo.Everyone)]
-    public void UpdateCountRPC(int roomCount)
-    {
-        Debug.Log("UpdatingCount"); 
-        playerCountText.gameObject.SetActive(true);
-        playerCountText.text = "Players: " + roomCount.ToString();
     }
 
     //Call here when the game is done
@@ -176,6 +140,7 @@ public class GameManager : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     public void LevelOverRPC()
     {
+        Debug.Log("Run LevelOverRPC");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         EndCanvas.GetComponent<Canvas>().enabled = false;
         

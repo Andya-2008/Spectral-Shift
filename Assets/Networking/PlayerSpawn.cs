@@ -52,7 +52,7 @@ public class PlayerSpawn : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         DontDestroyOnLoad(this.gameObject);
-        GameObject.Find("GameManager").GetComponent<GameManager>().PlayerList.Add(this.gameObject);
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().PlayerList.Add(this.gameObject);
         if(!this.GetComponent<NetworkObject>().IsOwner)
         {
             myCam.SetActive(false);

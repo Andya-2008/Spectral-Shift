@@ -8,11 +8,12 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class EndLevelCollision : MonoBehaviour
 {
 
-    private GameManager gameManager;
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        if(GameObject.Find("GameManager") != null)
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 

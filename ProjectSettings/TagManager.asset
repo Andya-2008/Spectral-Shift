@@ -7,6 +7,7 @@ TagManager:
   - Fire
   - MyPlayer
   - Shard
+  - GameManager
   layers:
   - Default
   - TransparentFX
