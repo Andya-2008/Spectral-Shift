@@ -55,11 +55,6 @@ public class GameManagerSpawn : NetworkBehaviour
         }
     }
 
-    public void LevelOverRPC()
-    {
-        GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().LevelOverRPC();
-    }
-
     public void SpawnNewPlayer()
     {
         Debug.Log("1");
