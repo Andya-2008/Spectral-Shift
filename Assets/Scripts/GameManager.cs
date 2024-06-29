@@ -143,12 +143,34 @@ public class GameManager : NetworkBehaviour
         Debug.Log("Run LevelOverRPC");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         EndCanvas.GetComponent<Canvas>().enabled = false;
-        
+
+        foreach (GameObject player in PlayerList)
+        {
+            player.GetComponent<OnReachEnd>().ResetPlayerRPC();
+        }
     }
+
     public void SetNewSpawn()
     {
-        StartingPos1 = GameObject.Find("StartingPos1").transform;
-        StartingPos2 = GameObject.Find("StartingPos2").transform;
+        if (GameObject.Find("StartingPos1").transform != null)
+        {
+            StartingPos1 = GameObject.Find("StartingPos1").transform;
+        }
+
+        else
+        {
+            Debug.LogWarning("Player 1's starting position could not be found!");
+        }
+
+        if (GameObject.Find("StartingPos2").transform != null)
+        {
+            StartingPos2 = GameObject.Find("StartingPos2").transform;
+        }
+
+        else
+        {
+            Debug.LogWarning("Player 2's starting position could not be found!");
+        }
     }
 
     [Rpc(SendTo.Everyone)]
