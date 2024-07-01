@@ -20,7 +20,7 @@ public class DeathPlane : MonoBehaviour
     {
         if (other.gameObject.tag == "MyPlayer" || other.gameObject.tag == "Player")
         {
-            GameObject.Find("GameManager").GetComponent<DeathManager>().OnDeath();
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<DeathManager>().OnDeath();
         }
     }
 }
