@@ -15,10 +15,10 @@ EditorBuildSettings:
     path: Assets/Scenes/TutorialScene.unity
     guid: b26d6d84f0b28d842a36a79f63861ec9
   - enabled: 1
-    path: Assets/Scenes/Levels/Level1.unity
+    path: Assets/Scenes/Levels/Level2.unity
     guid: ed18b88fc27514b1cb00947fcef78af4
   - enabled: 1
-    path: Assets/Scenes/Levels/Level2.unity
+    path: Assets/Scenes/Levels/Level1.unity
     guid: d99a62a0f4a984262beb47f1ff24f482
   - enabled: 1
     path: Assets/Scenes/Levels/Level3.unity
@@ -26,11 +26,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Level4.unity
     guid: 319f9ee357694471882a8f956e6329f5
-  - enabled: 1
-    path: Assets/Scenes/Levels/Level5.unity
-    guid: c261830cebbcb4c08808278696e56b8b
-  - enabled: 1
-    path: Assets/Scenes/Levels/Level6.unity
-    guid: 11e183c3b08494b95a94628363a8991c
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
