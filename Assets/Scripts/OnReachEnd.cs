@@ -6,10 +6,12 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class OnReachEnd : NetworkBehaviour
 {
+    bool hasReachedEnd;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        hasReachedEnd = false; 
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class OnReachEnd : NetworkBehaviour
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         GetComponent<FirstPersonController>().isMoving = false;
         GetComponent<FirstPersonController>().myCapsule.SetActive(false);
+        hasReachedEnd = true;
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -40,6 +43,11 @@ public class OnReachEnd : NetworkBehaviour
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         GetComponent<FirstPersonController>().isMoving = true;
         GetComponent<FirstPersonController>().myCapsule.SetActive(true);
+    }
+
+    public bool HasPlayerReachedEnd()
+    {
+        return this.hasReachedEnd;
     }
 
 }
