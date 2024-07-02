@@ -76,6 +76,7 @@ public class GameManager : NetworkBehaviour
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("OnSceneLoaded: " + "IsHost: " + IsHost + ", isLevel1Completed: " + isLevel1Completed + ", isLevel2Completed: " + isLevel2Completed);
         foreach(GameObject player in PlayerList)
         {
             player.GetComponent<FirstPersonController>().enabled = true;

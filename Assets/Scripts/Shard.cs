@@ -23,8 +23,8 @@ public class Shard : MonoBehaviour
         {
             if(collision.gameObject.tag == "MyPlayer" || collision.gameObject.tag == "Player")
             {
-                GameObject.Find("GameManager").GetComponent<DeathManager>().OnDeath();
-                GameObject.Find("ShardManager").GetComponent<Maze_ShardManager>().DestroyAllShardsRPC();
+                GameObject.FindGameObjectWithTag("GameManager").GetComponent<DeathManager>().OnDeath();
+                GameObject.FindGameObjectWithTag("ShardManager").GetComponent<Maze_ShardManager>().DestroyAllShardsRPC();
             }
         }
     }

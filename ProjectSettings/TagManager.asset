@@ -8,6 +8,7 @@ TagManager:
   - MyPlayer
   - Shard
   - GameManager
+  - ShardManager
   layers:
   - Default
   - TransparentFX

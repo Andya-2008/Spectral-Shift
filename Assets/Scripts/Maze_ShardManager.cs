@@ -16,7 +16,7 @@ public class Maze_ShardManager : NetworkBehaviour
     {
         colors.Add("Red");
         //colors.Add("Blue");
-        colors.Add("Yellow");
+        colors.Add("Cyan");
         //colors.Add("Cyan");
         startTime = Time.time;
     }
@@ -45,7 +45,7 @@ public class Maze_ShardManager : NetworkBehaviour
         newShard.layer = LayerMask.NameToLayer(colors[colorNum] + " Objects");
     }
 
-    [Rpc(SendTo.Everyone)]
+    [Rpc(SendTo.Server)]
     public void DestroyAllShardsRPC()
     {
         foreach (GameObject shard in GameObject.FindGameObjectsWithTag("Shard"))
