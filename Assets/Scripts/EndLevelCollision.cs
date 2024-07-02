@@ -40,7 +40,7 @@ public class EndLevelCollision : MonoBehaviour
             }
         }
 
-        if (gameManager.numOfPlayersCompleted >= 2 && NetworkManager.Singleton.IsHost)
+        if (gameManager.numOfPlayersCompleted >= 2)
         {
             gameManager.GetComponent<GameManager>().StartEndGameRPC();
         }

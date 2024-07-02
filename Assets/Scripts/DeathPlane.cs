@@ -18,7 +18,7 @@ public class DeathPlane : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "MyPlayer" || other.gameObject.tag == "Player")
+        if ((other.gameObject.tag == "MyPlayer" || other.gameObject.tag == "Player") && !other.gameObject.GetComponent<OnReachEnd>().HasPlayerReachedEnd())
         {
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<DeathManager>().OnDeath();
         }
