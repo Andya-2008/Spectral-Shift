@@ -128,8 +128,8 @@ public class GameManager : NetworkBehaviour
         }
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    public void ResetPlayersCompletedServerRpc()
+    [Rpc(SendTo.Everyone)]
+    public void ResetPlayersCompletedRpc()
     {
         numOfPlayersCompleted = 0;
     }
@@ -138,15 +138,22 @@ public class GameManager : NetworkBehaviour
     public void LevelOverRPC()
     {
         Debug.Log("Run LevelOverRPC");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
-        EndCanvas.GetComponent<Canvas>().enabled = false;
-
-        foreach (GameObject player in PlayerList)
+        if (SceneManager.GetActiveScene().name.Equals("Level4"))
         {
-            player.GetComponent<OnReachEnd>().ResetPlayerRPC();
+            GameObject.Find("EndCanvas").GetComponent<Canvas>().enabled = true;
         }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            EndCanvas.GetComponent<Canvas>().enabled = false;
 
-        ResetPlayersCompletedServerRpc();
+            foreach (GameObject player in PlayerList)
+            {
+                player.GetComponent<OnReachEnd>().ResetPlayerRPC();
+            }
+
+            ResetPlayersCompletedRpc();
+        }
     }
 
     public void SetNewSpawn()
