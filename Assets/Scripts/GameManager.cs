@@ -126,16 +126,6 @@ public class GameManager : NetworkBehaviour
         {
             isLevel4Completed = true;
         }
-
-        else if (SceneManager.GetActiveScene().name.Equals("Level5"))
-        {
-            isLevel5Completed = true;
-        }
-
-        else if (SceneManager.GetActiveScene().name.Equals("Level6"))
-        {
-            isLevel6Completed = true;
-        }
     }
 
     [Rpc(SendTo.Everyone)]
