@@ -2998,8 +2998,8 @@ GameObject:
   - component: {fileID: 825291153}
   - component: {fileID: 825291157}
   - component: {fileID: 825291156}
-  - component: {fileID: 825291155}
   - component: {fileID: 825291154}
+  - component: {fileID: 825291158}
   m_Layer: 0
   m_Name: DeathPlane
   m_TagString: Untagged
@@ -3034,28 +3034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1f417034a1886419e242b23d371f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!64 &825291155
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 825291152}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &825291156
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3106,6 +3084,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825291152}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &825291158
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825291152}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 1.02, z: 10}
+  m_Center: {x: 0.00000020675361, y: 0.0000019073486, z: 0}
 --- !u!1001 &860487638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5545,7 +5544,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d2f1307ae72b44d3a8a1297dbc5ef447, type: 2}
     - target: {fileID: 3492032437302958549, guid: 935260576d9a7e546b841e06a0467fe8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6663441595655020347, guid: 935260576d9a7e546b841e06a0467fe8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -5553,7 +5552,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1448cee778abe814dbc2931ec8e7a2d6, type: 2}
     - target: {fileID: 8402747350015026020, guid: 935260576d9a7e546b841e06a0467fe8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
