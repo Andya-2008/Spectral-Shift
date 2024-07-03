@@ -75,16 +75,8 @@ public class PlayerSpawn : NetworkBehaviour
             player1 = true;
             GameObject.Find("PlayerText").GetComponent<TextMeshProUGUI>().text = "Player 1";
             color1Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Red Objects");
-
-            if (GameManager.isLevel3Completed == true)
-            {
-                color2Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Green Objects");
-
-                if (GameManager.isLevel5Completed == true)
-                {
-                    color3Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Blue Objects");
-                }
-            }
+            color2Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Green Objects");
+            color3Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Blue Objects");
         }
         else if (IsClient)
         {
@@ -92,16 +84,8 @@ public class PlayerSpawn : NetworkBehaviour
             player2 = true;
             GameObject.Find("PlayerText").GetComponent<TextMeshProUGUI>().text = "Player 1";
             color1Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Cyan Objects");
-
-            if (GameManager.isLevel3Completed == true)
-            {
-                color2Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Magenta Objects");
-
-                if (GameManager.isLevel5Completed == true)
-                {
-                    color3Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Yellow Objects");
-                }
-            }
+            color2Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Magenta Objects");
+            color3Cam.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "Water", "UI", "Yellow Objects");
         }
     }
 }

@@ -24,7 +24,7 @@ public class SwitchActiveCamera : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (color1CamObject.activeSelf == true && GameManager.isLevel3Completed)
+            if (color1CamObject.activeSelf == true && GameManager.isLevel2Completed)
             {
                 color1CamObject.SetActive(false);
                 color3CamObject.SetActive(false);
@@ -32,7 +32,7 @@ public class SwitchActiveCamera : MonoBehaviour
                 GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().ChangeActiveCamera(color2Cam);
             }
 
-            else if (color2CamObject.activeSelf == true && GameManager.isLevel5Completed)
+            else if (color2CamObject.activeSelf == true && GameManager.isLevel3Completed)
             {
                 color1CamObject.SetActive(false);
                 color2CamObject.SetActive(false);

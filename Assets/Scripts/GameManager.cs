@@ -126,16 +126,12 @@ public class GameManager : NetworkBehaviour
         {
             isLevel4Completed = true;
         }
+    }
 
-        else if (SceneManager.GetActiveScene().name.Equals("Level5"))
-        {
-            isLevel5Completed = true;
-        }
-
-        else if (SceneManager.GetActiveScene().name.Equals("Level6"))
-        {
-            isLevel6Completed = true;
-        }
+    [ServerRpc(RequireOwnership = false)]
+    public void ResetPlayersCompletedServerRpc()
+    {
+        numOfPlayersCompleted = 0;
     }
 
     [Rpc(SendTo.Everyone)]
@@ -149,6 +145,8 @@ public class GameManager : NetworkBehaviour
         {
             player.GetComponent<OnReachEnd>().ResetPlayerRPC();
         }
+
+        ResetPlayersCompletedServerRpc();
     }
 
     public void SetNewSpawn()
