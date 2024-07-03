@@ -128,6 +128,12 @@ public class GameManager : NetworkBehaviour
         }
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    public void ResetPlayersCompletedServerRpc()
+    {
+        numOfPlayersCompleted = 0;
+    }
+
     [Rpc(SendTo.Everyone)]
     public void LevelOverRPC()
     {
@@ -139,6 +145,8 @@ public class GameManager : NetworkBehaviour
         {
             player.GetComponent<OnReachEnd>().ResetPlayerRPC();
         }
+
+        ResetPlayersCompletedServerRpc();
     }
 
     public void SetNewSpawn()

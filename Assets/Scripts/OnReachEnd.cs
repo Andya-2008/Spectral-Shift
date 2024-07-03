@@ -36,6 +36,12 @@ public class OnReachEnd : NetworkBehaviour
         GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().numOfPlayersCompleted++;
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    public void ResetPlayersCompletedServerRpc()
+    {
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().numOfPlayersCompleted = 0;
+    }
+
     [Rpc(SendTo.Everyone)]
     public void ResetPlayerRPC()
     {
