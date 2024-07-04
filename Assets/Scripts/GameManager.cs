@@ -105,6 +105,7 @@ public class GameManager : NetworkBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         EndCanvas.GetComponent<Canvas>().enabled = true;
+        GameObject.Find("LevelOverButton").SetActive(true);
 
         // Checks if the level just completed is level 1
         if (SceneManager.GetActiveScene().name.Equals("Level1"))
@@ -146,6 +147,7 @@ public class GameManager : NetworkBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             EndCanvas.GetComponent<Canvas>().enabled = false;
+            GameObject.Find("LevelOverButton").SetActive(false);
 
             foreach (GameObject player in PlayerList)
             {
