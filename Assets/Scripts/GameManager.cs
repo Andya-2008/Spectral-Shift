@@ -7,6 +7,7 @@ using Unity.Services.Lobbies.Models;
 using UnityEngine.SceneManagement;
 using JetBrains.Annotations;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.UI;
 
 public class GameManager : NetworkBehaviour
 {
@@ -105,7 +106,7 @@ public class GameManager : NetworkBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         EndCanvas.GetComponent<Canvas>().enabled = true;
-        GameObject.Find("LevelOverButton").SetActive(true);
+        GameObject.Find("LevelOverButton").GetComponent<Button>().enabled = true;
 
         // Checks if the level just completed is level 1
         if (SceneManager.GetActiveScene().name.Equals("Level1"))
@@ -147,7 +148,7 @@ public class GameManager : NetworkBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             EndCanvas.GetComponent<Canvas>().enabled = false;
-            GameObject.Find("LevelOverButton").SetActive(false);
+            GameObject.Find("LevelOverButton").GetComponent<Button>().enabled = false;
 
             foreach (GameObject player in PlayerList)
             {
