@@ -149,7 +149,13 @@ public class GameManager : NetworkBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             EndCanvas.GetComponent<Canvas>().enabled = false;
             GameObject.Find("LevelOverButton").GetComponent<Button>().enabled = false;
+            GameObject.Find("DeathPlane").GetComponent<MeshCollider>().enabled = true;
 
+            if (SceneManager.GetActiveScene().name.Equals("Level 3"))
+            {
+                GameObject.Find("DeathPlane").GetComponent<MeshCollider>().enabled = false;
+            }
+            
             foreach (GameObject player in PlayerList)
             {
                 player.GetComponent<OnReachEnd>().ResetPlayerRPC();
